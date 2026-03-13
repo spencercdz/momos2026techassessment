@@ -61,6 +61,12 @@ Frontend (optional) in `frontend/.env`:
 - The architecture cleanly separates controllers, services, and models for easy replacement with PostgreSQL.
 - For high load, move to PostgreSQL with pooled connections and horizontally scaled Node.js instances.
 
+## Potential Improvements
+- Add a caching layer for hot links and redirect throughput.
+- Add rate limiting, abuse detection, and URL safety checks.
+- Support custom domains and vanity aliases.
+- Add authentication and per-user dashboards.
+
 ## Tests
 Run backend tests:
 ```
@@ -73,6 +79,10 @@ Run a quick load test (autocannon):
 CONNECTIONS=100 DURATION=20 npm run load:test
 ```
 
+## Deliverables
+- Demo video link or file location: `docs/DEMO_VIDEO.md`
+- AI usage details and conversation export: `docs/AI_USAGE.md`, `docs/AI_CONVERSATION_EXPORT.md`
+
 ## Demo Video Checklist
 Include the following in your demo:
 1) Start the system with `npm run dev`
@@ -82,4 +92,4 @@ Include the following in your demo:
 5) Show click count incrementing
 
 ## AI Usage
-This project was implemented with assistance from Codex for scaffolding, component structure, and iteration. All core logic, validation, and design decisions were reviewed and refined to meet the assessment requirements.
+This project was implemented with assistance from Codex for scaffolding, component structure, and iteration. All core logic, validation, and design decisions were reviewed and refined to meet the assessment requirements. See `docs/AI_USAGE.md` and include the full conversation export in `docs/AI_CONVERSATION_EXPORT.md`.
