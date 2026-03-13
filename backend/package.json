@@ -9,6 +9,7 @@
     "start": "node src/server.js",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "db:migrate": "node src/database/migrate.js",
+    "db:reset": "rm -f data/url_shortener.db && npm run db:migrate",
     "load:test": "node scripts/load-test.js"
   },
   "dependencies": {
