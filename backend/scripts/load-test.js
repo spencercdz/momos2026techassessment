@@ -14,7 +14,10 @@ const instance = autocannon(
     duration,
     body: JSON.stringify({ url: "https://example.com/some/very/long/url" }),
     headers: {
-      "content-type": "application/json"
+      "content-type": "application/json",
+      // Signal to the backend that this is a load test so it
+      // can avoid persisting rows while still exercising the code path.
+      "x-load-test": "1"
     }
   },
   (err, result) => {

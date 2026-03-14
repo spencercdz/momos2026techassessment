@@ -21,7 +21,9 @@ export async function getUrlByShortCode(shortCode) {
 export async function listUrls() {
   const db = await getDb();
   return db.all(
-    "SELECT id, short_code, original_url, click_count, created_at FROM urls ORDER BY datetime(created_at) DESC"
+    // Order by created_at using an index-friendly expression and
+    // only return a recent slice to keep responses fast.
+    "SELECT id, short_code, original_url, click_count, created_at FROM urls ORDER BY created_at DESC LIMIT 250"
   );
 }
 

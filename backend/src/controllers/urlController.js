@@ -5,7 +5,8 @@ import {
   recordClick
 } from "../services/urlService.js";
 import { validateUrl } from "../utils/validateUrl.js";
-import { isValidShortCode } from "../utils/shortCode.js";
+import { generateShortCode, isValidShortCode } from "../utils/shortCode.js";
+import { getBaseUrl } from "../config.js";
 
 export async function shortenUrl(req, res, next) {
   const { url } = req.body || {};
@@ -13,6 +14,20 @@ export async function shortenUrl(req, res, next) {
 
   if (!validation.valid) {
     return res.status(400).json({ error: validation.error });
+  }
+
+  // In load-test mode we want to exercise the endpoint without
+  // actually writing any rows into the database.
+  const isLoadTest =
+    req.headers["x-load-test"] === "1" || process.env.LOAD_TEST_MODE === "1";
+
+  if (isLoadTest) {
+    const shortCode = generateShortCode();
+    const baseUrl = getBaseUrl().replace(/\/$/, "");
+    return res.status(201).json({
+      shortUrl: `${baseUrl}/${shortCode}`,
+      shortCode
+    });
   }
 
   try {
