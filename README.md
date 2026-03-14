@@ -76,20 +76,22 @@ npm run test
 ## Load Test
 Run a quick load test (autocannon):
 ```
-CONNECTIONS=100 DURATION=20 npm run load:test
+TARGET_URL=http://localhost:3000 npm run load:test
 ```
 
 ## Deliverables
-- Demo video link or file location: `docs/DEMO_VIDEO.md`
+- Demo video link or file location: [Demo Video](https://youtu.be/B0urO6C9b-s)
 - AI usage details and conversation export: `docs/AI_USAGE.md`, `docs/AI_CONVERSATION_EXPORT.md`
 
 ## Demo Video Checklist
-Include the following in your demo:
+[Demo Video](https://youtu.be/B0urO6C9b-s)
+Summary
 1) Start the system with `npm run dev`
 2) Create a shortened URL
 3) Visit the short URL and show redirect working
 4) Confirm the URL list updates
 5) Show click count incrementing
+6) Run the stress test under high load with `TARGET_URL=http://localhost:3000 npm run load:test`.
 
 ## AI Usage
 This project was implemented with assistance from Codex for scaffolding, component structure, and iteration. All core logic, validation, and design decisions were reviewed and refined to meet the assessment requirements. See `docs/AI_USAGE.md` and include the full conversation export in `docs/AI_CONVERSATION_EXPORT.md`.
